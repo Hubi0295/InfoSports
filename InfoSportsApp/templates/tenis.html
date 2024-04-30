@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a sport</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/tlo.js' %}"></script>
+    <style>
+        aside{background-image: linear-gradient(to bottom right, #e96b39, #FF4500);}
+        footer{background-image: linear-gradient(to top left, #e96b39, #FF4500);}
+        body{background-color: #FFFFFF;}
+    </style>
+</head>
+<body>
+<header>
+    <aside id="pasek">
+        <nav id="navigation">
+            <ul>
+                <a href="/InfoSportsApp/f1"><li id="f1">Formuła 1</li></a>
+                <a href="/InfoSportsApp/football"><li id="football">Piłka nożna</li></a>
+                <a href="/InfoSportsApp/home"><li id="home">Strona główna</li></a>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+
+    </main>
+
+    <footer>
+        <div id="autor">Wykonał Hubert Szelepusta</div>
+    </footer>
+</header>
+</body>
+</html>

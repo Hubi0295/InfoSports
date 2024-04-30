@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a sport</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylef1.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/tlo.js' %}"></script>
+    <style>
+        {% block style %}
+
+        {% endblock %}
+    </style>
+</head>
+<body>
+<header>
+    <aside id="pasek">
+        <nav id="navigation">
+            <ul>
+                <a href="/InfoSportsApp/home"><li id="home">Strona główna</li></a>
+                <a href="/InfoSportsApp/football"><li id="football">Piłka nożna</li></a>
+                <a href="/InfoSportsApp/tenis"><li id="tenis">Tenis</li></a>
+            </ul>
+        </nav>
+        <div id="control">
+            <table>
+            <tr><td><button><a href="/InfoSportsApp/f1/DaneKierowcy">Dane kierowcy</a></button></td><td><button><a href="/InfoSportsApp/f1/StatystykiWyscigow">Statystyki wyścigów</a></button></td><td><button> <a href="/InfoSportsApp/f1/Live">Wyścig Live</a></button></td></tr>
+            <tr><td><button><a href="/InfoSportsApp/f1/MomentKierowcy">Moment kierowcy</a></button></td><td><button><a href="/InfoSportsApp/f1/Ranking">Ranking</a></button></td><td><button><a href="/InfoSportsApp/f1/DaneBolidu">Dane bolidu</a></button></td></tr>
+            <tr><td><button><a href="/InfoSportsApp/f1/Radio">Radio</a></button></td><td><button><a href="/InfoSportsApp/f1/Historia">Historia F1</a></button></td><td><button><a href="/InfoSportsApp/f1/Pogoda">Pogoda</a></button></td></tr>
+            </table>
+        </div>
+    </aside>
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+    <footer>
+        <div style="color:white" id="autor">Wykonał Hubert Szelepusta</div>
+    </footer>
+</header>
+</body>
+</html>

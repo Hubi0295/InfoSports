@@ -1,0 +1,35 @@
+aside{background-image: linear-gradient(to bottom right, #DC0000, #000000); font-family:'Formula';}
+        footer{background-image: linear-gradient(to top left, #DC0000, #000000);}
+        body{background-color: #3e393d;}
+        ul li{background-color: #970000;border: 1px solid #DC0000;}
+        ul li:hover{background-color: #BA0000;}
+        main{background-image: url("/static/f1.jpg");}
+        button a {font-family:'Formula';font-size:15px;}
+        #control{
+            margin-top: 50px;
+            font-family:'Formula';
+        }
+        button {
+        background-image: linear-gradient(to bottom right, #DC0000, #000000);
+        display: grid;
+        justify-content: center; /* wyśrodkowanie przycisków w poziomie */
+        border-radius: 10px; /* zaokrąglenie krawędzi */
+        width: 95px;
+        height: 70px;
+    }
+
+        button a {
+        display: block;
+        text-align: center;
+        padding: 10px;
+        background-image: linear-gradient(to bottom right, #DC0000, #000000);
+        color: #FFFFFF; /* kolor tekstu */
+        text-decoration: none;
+        border-radius: 10px; /* zaokrąglenie krawędzi */
+    }
+
+        button:hover {
+        transform: translateY(+4px); /* przesunięcie przycisku w górę */
+        background-image: linear-gradient(to bottom right, #FC0000, #00000F);
+    }
+        #autor{font-family:'Formula';font-size:20px;}

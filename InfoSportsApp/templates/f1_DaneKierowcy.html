@@ -1,0 +1,81 @@
+{% extends "f1.html" %}
+{% block content %}
+
+<form method="get" action="http://127.0.0.1:8000/InfoSportsApp/f1/DaneKierowcy/">
+<label for="driverLastName"></label><input list="kierowcy" title="Wybierz z listy beneficjenta" required name="driverLastName" id="driverLastName" class="driverLastName"/>
+ <datalist id="kierowcy">
+                    {% for driver in drivers_lastname %}
+                    <option value={{ driver }}></option>
+                    {% endfor %}
+ </datalist>
+    <button type="submit">Pokaż kierowce</button>
+</form>
+
+{% if broadcast_name %}
+
+<div id="result">
+<ul>
+         <li class="driver_data">  <img src="{{ headshot_url }}"/></li>
+         <li class="driver_data"> <h3>Kierowca:</h3>{{ broadcast_name }}</li>
+         <li class="driver_data"> <h3>Kraj pochodzenia: </h3> {{ country_code }}</li>
+         <li class="driver_data"> <h3>Numer kierowcy:</h3> {{ driver_number }}</li>
+         <li class="driver_data"> <h3>Imię: </h3>   {{ first_name }}</li>
+         <li class="driver_data"> <h3>Pełne Imię: </h3>    {{ full_name }}</li>
+         <li class="driver_data"> <h3>Nazwisko:   </h3>  {{ last_name }}</li>
+         <li class="driver_data"> <h3>Ostatni meeting:  </h3> {{ meeting_key }}</li>
+         <li class="driver_data"> <h3>Akronim: </h3> {{ name_acronym }}</li>
+         <li class="driver_data"> <h3>Ostatnia sesja: </h3>  {{ session_key }}</li>
+         <li class="driver_data"> <h3>Barwy: </h3>  <div class="kwadracik"></div></li>
+         <li class="driver_data"> <h3>Nazwa zespołu:   </h3>  {{ team_name }}</li>
+</ul>
+</div>
+
+
+
+{% endif %}
+
+{% endblock %}
+
+{% block style %}
+p{color: #FFFFFF;}
+main{background-color: #3e393d; background-image: none;}
+.driver_data{    margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);transition: transform 0.2s ease;border-bottom: 1px solid #ddd;color: #333;
+    background-color: #fff;
+    border-radius: 5px;
+    float:left;
+    width: 300px;
+    height: 92px;
+}
+.driver_data h2{
+font-weight: bold;
+}
+.kwadracik {
+    width: 30px; /* Ustaw szerokość kwadracika */
+    height: 30px; /* Ustaw wysokość kwadracika */
+    background-color: #{{ team_colour }};
+    margin-left: 130px;
+}
+form{
+    margin-top:30px;
+    margin-left:35px;
+}
+input{
+  padding: 7px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 250px;
+  transition: border-color 0.3s;
+}
+
+input:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+button{
+    color:white;
+    font-family:'Formula';
+    font-size:18px;
+}
+{% endblock %}
