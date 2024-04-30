@@ -3,10 +3,10 @@ body{
 }
 
 main{
-    width:75%;
+    width:74%;
     float:left;
     background-color: #cccccc;
-    height: 85vh;
+    height: 83vh;
     background-image: url("/static/tlo.jpg");
     background-size: cover;
     background-position: center;
@@ -51,9 +51,9 @@ ul li a {
     text-decoration : none;
 }
 aside {
-    width:24%;
-    height: 85vh;
     float:left;
+    width:24%;
+    height: 83vh;
     background-color: antiquewhite;
     border-radius:30px;
     font-family: 'Roboto', sans-serif; /* Wybierz czcionkę o futurystycznym stylu */

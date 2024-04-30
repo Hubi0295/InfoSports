@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
 
-        <title>Strona główna</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-        <script type="text/javascript" src="{% static 'js/tlo.js' %}"></script>
-    </head>
-    <body>
+    <title>Strona główna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/tlo.js' %}"></script>
+</head>
+<body>
+    <div id="container">
     <header>
-    <aside id="pasek">
+    </header>
+        <aside id="pasek">
             <nav id="navigation">
                 <ul>
                     <a href="/InfoSportsApp/f1"><li id="f1">Formuła 1</li></a>
@@ -18,15 +20,12 @@
                     <a href="/InfoSportsApp/tenis"><li id="tenis">Tenis</li></a>
                 </ul>
             </nav>
-
         </aside>
-
         <main>
-
         </main>
         <footer>
             <div id="autor">Wykonał: Hubert Szelepusta</div>
         </footer>
-    </header>
-    </body>
+    </div>
+</body>
 </html>

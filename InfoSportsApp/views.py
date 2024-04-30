@@ -42,3 +42,5 @@ def f1_DaneKierowcy(request):
         return render(request, "f1_DaneKierowcy.html", context)
     else:
         return render(request, "f1_DaneKierowcy.html", context)
+def f1_HistoriaF1(request):
+    return render(request, "f1Historia.html")

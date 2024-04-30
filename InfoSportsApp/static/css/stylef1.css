@@ -14,7 +14,7 @@ aside{background-image: linear-gradient(to bottom right, #DC0000, #000000); font
         display: grid;
         justify-content: center; /* wyśrodkowanie przycisków w poziomie */
         border-radius: 10px; /* zaokrąglenie krawędzi */
-        width: 95px;
+        width: 90px;
         height: 70px;
     }
 

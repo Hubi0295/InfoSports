@@ -1,0 +1,63 @@
+{% extends "f1.html" %}
+{% load static %}
+{% block script %}
+<script src=
+ "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+ </script>
+<script type="text/javascript" src="{% static 'js/historia.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="tekst">
+    <button onclick="toggleDiv()">Pokaz slajdów`</button>
+    <p id="contentHistoria" style="color:#000000"></p>
+    <div id="slideshow" style="display:none">
+         <img src="/static/pilka.jpg" alt="image1" class="active" />
+         <img src="/static/tenis.jpg" alt="image2" />
+         <img src="/static/f1.jpg" alt="image3" />
+     </div>
+    <div id="historia">
+        <button id="b1">1950-1960</button>
+        <button id="b2">1960-1970</button>
+        <button id="b3">1970-1980</button>
+        <button id="b4">1980-1990</button>
+        <button id="b5">1990-2000</button>
+        <button id="b6">2000-2010</button>
+        <button id="b7">2010-2024</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block style %}
+p{color: #FFFFFF;}
+main{background-color: #3e393d; background-image: none; color:#000000;}
+#tekst{color:#000000;background-color: #FFFFFF; border: 5px solid grey; border-radius:15px; height: 70vh; margin: 10px;}
+#slideshow img{
+    width:60%;
+    height:56vh;
+    border-radius: 10px;
+}
+#historia{
+    display:block;
+    float: right;
+}
+#slideshow {
+    position:relative;
+    margin-top:20px;
+}
+#slideshow img {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+}
+#slideshow img.active {
+    z-index:10;
+}
+#slideshow img.last-active {
+    z-index:9;
+}
+.change-slide{
+    display:block;
+}
+{% endblock %}

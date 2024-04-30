@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/stylef1.css' %}"/>
     <script type="text/javascript" src="{% static 'js/tlo.js' %}"></script>
+    {% block script %}
+
+    {% endblock %}
     <style>
         {% block style %}
 
@@ -15,7 +18,9 @@
     </style>
 </head>
 <body>
+<div id="container">
 <header>
+</header>
     <aside id="pasek">
         <nav id="navigation">
             <ul>
@@ -28,7 +33,7 @@
             <table>
             <tr><td><button><a href="/InfoSportsApp/f1/DaneKierowcy">Dane kierowcy</a></button></td><td><button><a href="/InfoSportsApp/f1/StatystykiWyscigow">Statystyki wyścigów</a></button></td><td><button> <a href="/InfoSportsApp/f1/Live">Wyścig Live</a></button></td></tr>
             <tr><td><button><a href="/InfoSportsApp/f1/MomentKierowcy">Moment kierowcy</a></button></td><td><button><a href="/InfoSportsApp/f1/Ranking">Ranking</a></button></td><td><button><a href="/InfoSportsApp/f1/DaneBolidu">Dane bolidu</a></button></td></tr>
-            <tr><td><button><a href="/InfoSportsApp/f1/Radio">Radio</a></button></td><td><button><a href="/InfoSportsApp/f1/Historia">Historia F1</a></button></td><td><button><a href="/InfoSportsApp/f1/Pogoda">Pogoda</a></button></td></tr>
+            <tr><td><button><a href="/InfoSportsApp/f1/Radio">Radio</a></button></td><td><button><a href="/InfoSportsApp/f1/HistoriaF1">Historia F1</a></button></td><td><button><a href="/InfoSportsApp/f1/Pogoda">Pogoda</a></button></td></tr>
             </table>
         </div>
     </aside>
@@ -39,6 +44,6 @@
     <footer>
         <div style="color:white" id="autor">Wykonał Hubert Szelepusta</div>
     </footer>
-</header>
+</div>
 </body>
 </html>
