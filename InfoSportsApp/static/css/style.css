@@ -86,11 +86,14 @@ body{
 
 FOOTER{
     clear:both;
-    width:100%;
+    width:99%;
     height: 12vh;
     background-color: #d7d7d7;
     text-align:center;
     border-radius:30px;
+    position: fixed;
+    bottom: 0;
+    margin-left:1px;
 
 }
 body {
@@ -103,11 +106,7 @@ body {
 main {
   flex: 1;
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
+
 #autor{
     float: right;
     margin: 5px;

@@ -1,3 +1,4 @@
+body{cursor: url('/static/cursor.cur'), auto;}
 aside{background-image: linear-gradient(to bottom right, #DC0000, #000000); font-family:'Formula';}
         footer{background-image: linear-gradient(to top left, #DC0000, #000000);}
         body{background-color: #3e393d;}

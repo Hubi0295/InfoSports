@@ -9,37 +9,51 @@
 
 {% block content %}
 <div id="tekst">
-    <button onclick="toggleDiv()">Pokaz slajdów`</button>
+    <div id="historia">
+    <button onclick="toggleDiv()">Pokaz slajdów</button>
+    <button id="b1">1950-1960</button>
+    <button id="b2">1960-1970</button>
+    <button id="b3">1970-1980</button>
+    <button id="b4">1980-1990</button>
+    <button id="b5">1990-1995</button>
+    <button id="b6">1995-2000</button>
+    <button id="b7">2000-2007</button>
+    <button id="b8">2007-2010</button>
+    <button id="b9">2010-2012</button>
+    </div>
     <p id="contentHistoria" style="color:#000000"></p>
     <div id="slideshow" style="display:none">
-         <img src="/static/pilka.jpg" alt="image1" class="active" />
-         <img src="/static/tenis.jpg" alt="image2" />
-         <img src="/static/f1.jpg" alt="image3" />
+         <img src="/static/zdjecia/50-60.jpg" alt="image1" class="active" />
+         <img src="/static/zdjecia/60-70.jpg" alt="image2" />
+         <img src="/static/zdjecia/70-80.jpg" alt="image3" />
+         <img src="/static/zdjecia/70--80.jpg" alt="image4" />
+         <img src="/static/zdjecia/80--90.jpg" alt="image5" />
+         <img src="/static/zdjecia/00-12.jpg" alt="image7" />
+         <img src="/static/zdjecia/2012.jpg" alt="image8" />
      </div>
-    <div id="historia">
-        <button id="b1">1950-1960</button>
-        <button id="b2">1960-1970</button>
-        <button id="b3">1970-1980</button>
-        <button id="b4">1980-1990</button>
-        <button id="b5">1990-2000</button>
-        <button id="b6">2000-2010</button>
-        <button id="b7">2010-2024</button>
-    </div>
 </div>
 {% endblock %}
 
 {% block style %}
+#contentHistoria{color:white; margin-top: 100px; margin-left:20px;
+    font-family: Formula; font-size: 17px;}
 p{color: #FFFFFF;}
 main{background-color: #3e393d; background-image: none; color:#000000;}
 #tekst{color:#000000;background-color: #FFFFFF; border: 5px solid grey; border-radius:15px; height: 70vh; margin: 10px;}
 #slideshow img{
-    width:60%;
+    width:95%;
+    margin: 5px;
+    margin-left: 25px;
     height:56vh;
     border-radius: 10px;
 }
-#historia{
+#historia, #historia button{
+    align-items: center;
+    color:white;
+    font-family: Formula;
     display:block;
     float: right;
+    box-sizing: border-box;
 }
 #slideshow {
     position:relative;
