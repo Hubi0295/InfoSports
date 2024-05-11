@@ -1,6 +1,6 @@
 {% extends "f1.html" %}
 {% block content %}
-
+<div id="info" style="display:flex">
 <form method="get" action="http://127.0.0.1:8000/InfoSportsApp/f1/DaneKierowcy/">
 <label for="driverLastName"></label><input list="kierowcy" title="Wybierz z listy beneficjenta" required name="driverLastName" id="driverLastName" class="driverLastName"/>
  <datalist id="kierowcy">
@@ -10,9 +10,13 @@
  </datalist>
     <button type="submit">Pokaż kierowce</button>
 </form>
-
+    {% if broadcast_name %}
+    <div style="margin-left: 150px;">
+        <audio controls><source src={{ radio }} type="audio/mpeg"></audio>
+    </div>
+    {% endif %}
+</div>
 {% if broadcast_name %}
-
 <div id="result">
 <ul>
          <li class="driver_data">  <img src="{{ headshot_url }}"/></li>
@@ -39,11 +43,16 @@
 {% block style %}
 p{color: #FFFFFF;}
 main{background-color: #3e393d; background-image: none;}
-.driver_data{    margin-bottom: 10px;margin-right: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);transition: transform 0.2s ease;border-bottom: 1px solid #ddd;color: #333;
+.driver_data{
+    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    border-bottom: 1px solid #ddd;
+    color: #333;
     background-color: #fff;
     border-radius: 5px;
     float:left;
-    width: 280px;
+    width: 250px;
     height: 94px;
 }
 .driver_data h2{
@@ -53,7 +62,7 @@ font-weight: bold;
     width: 30px; /* Ustaw szerokość kwadracika */
     height: 30px; /* Ustaw wysokość kwadracika */
     background-color: #{{ team_colour }};
-    margin-left: 120px;
+    margin-left: 110px;
     margin-bottom: 10px;
 }
 form{
@@ -61,7 +70,7 @@ form{
     margin-left:35px;
 }
 input{
-  padding: 7px;
+  padding: 2px;
   border: 2px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
