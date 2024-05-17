@@ -42,8 +42,10 @@ function usunMojeWyscigi(){
         }
       }
       var lista = JSON.parse(localStorage.getItem('lista'));
-      lista.splice(op,1)
-      localStorage.setItem('lista', JSON.stringify(lista));
+      if(op>=0){
+        lista = lista.filter(obj => obj.id != id);
+        localStorage.setItem('lista', JSON.stringify(lista));
+      }
       pokazMojeWyscigi();
 
 }

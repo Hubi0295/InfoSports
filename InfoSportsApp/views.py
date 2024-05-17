@@ -30,7 +30,10 @@ def f1_DaneKierowcy(request):
 
         meeting_info = json.loads(urlopen("https://api.openf1.org/v1/meetings?meeting_key="+str(data["meeting_key"])).read().decode('utf-8'))[0]["meeting_name"]
         session_info = json.loads(urlopen("https://api.openf1.org/v1/sessions?session_key="+str(data["session_key"])).read().decode('utf-8'))[0]["session_name"]
-        radio = json.loads(urlopen("https://api.openf1.org/v1/team_radio?meeting_key=latest&driver_number=" + str(data["driver_number"])).read().decode('utf-8'))[0]["recording_url"]
+        try:
+            radio = json.loads(urlopen("https://api.openf1.org/v1/team_radio?meeting_key=latest&driver_number=" + str(data["driver_number"])).read().decode('utf-8'))[0]["recording_url"]
+        except:
+            radio = "#"
         context["broadcast_name"] = data["broadcast_name"]
         context["country_code"] = data["country_code"]
         context["driver_number"] = data["driver_number"]
