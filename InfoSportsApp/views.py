@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from urllib.request import urlopen
 import json
-
+from time import strftime
+import datetime
 from django.template import loader
 
 
@@ -48,3 +49,54 @@ def f1_DaneKierowcy(request):
         return render(request, "f1_DaneKierowcy.html", context)
 def f1_HistoriaF1(request):
     return render(request, "f1Historia.html")
+def f1_MojeWyscigiF1(request):
+    return render(request, "f1_MojeWyscigi.html")
+def f1_StatystykiF1(request):
+    context={}
+    context["dateStart"] = request.GET.get('dateStart')
+    if context["dateStart"]:
+        context["dateEnd"] = request.GET.get('dateEnd')
+        context["type"] = request.GET.get('type')
+        context["rainfall"]=request.GET.get('rainfall')
+        context["air_temperature"] = request.GET.get('air_temperature')
+        context["track_temperature"] = request.GET.get('track_temperature')
+        context["wind_direction"] = request.GET.get('wind_direction')
+        context["wind_speed"] = request.GET.get('wind_speed')
+        context["pressure"] = request.GET.get('pressure')
+        context["humidity"] = request.GET.get('humidity')
+        context["isAccepted"] = request.GET.get('isAccepted')
+
+        response = urlopen('https://api.openf1.org/v1/weather?'
+                           'date>='                 + str(context["dateStart"]) +
+                           '&date<='                + str(context["dateEnd"])+
+                           '&rainfall='             +str(context["rainfall"])+
+                           '&air_temperature>='     +str(int(context["air_temperature"])-1)+
+                           '&air_temperature<='     +str(int(context["air_temperature"])+1)+
+                           '&track_temperature>='   + str(int(context["track_temperature"]) - 1) +
+                           '&track_temperature<='   + str(int(context["track_temperature"]) + 1) +
+                           '&wind_direction>='      + str(int(context["wind_direction"]) - 1) +
+                           '&wind_direction<='      + str(int(context["wind_direction"]) + 1) +
+                           '&wind_speed>='          + str(int(context["wind_speed"]) - 1) +
+                           '&wind_speed<='          + str(int(context["wind_speed"]) + 1) +
+                           '&pressure>='            + str(int(context["pressure"]) - 1) +
+                           '&pressure<='            + str(int(context["pressure"]) + 1) +
+                           '&humidity>='            + str(int(context["humidity"]) - 1) +
+                           '&humidity<='            + str(int(context["humidity"]) + 1)
+                           )
+        data = json.loads(response.read().decode('utf-8'))
+        if(data):
+            searchedMeeting = json.loads(urlopen('https://api.openf1.org/v1/meetings?meeting_key='+str(data[0]['meeting_key'])).read().decode('utf-8'))[0]
+            context["meeting_name"]=searchedMeeting["meeting_name"]
+            context["meeting_official_name"] = searchedMeeting["meeting_official_name"]
+            context["location"] = searchedMeeting["location"]
+            context["country_name"] = searchedMeeting["country_name"]
+            context["circuit_short_name"] = searchedMeeting["circuit_short_name"]
+            context["date_start"] = searchedMeeting["date_start"]
+            context["meeting_key"] = searchedMeeting["meeting_key"]
+
+        else:
+            context["data"]="Brak danych"
+
+        return render(request, "f1_StatystykiF1.html", context)
+    else:
+        return render(request, "f1_StatystykiF1.html", context)
