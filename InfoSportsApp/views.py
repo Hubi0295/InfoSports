@@ -2,11 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from urllib.request import urlopen
 import json
-from time import strftime
-import datetime
+import threading
+from datetime import datetime, timedelta
 from django.template import loader
 
-
+import time
 def index(request):
     return render(request,"index.html")
 def f1(request):
@@ -103,3 +103,48 @@ def f1_StatystykiF1(request):
         return render(request, "f1_StatystykiF1.html", context)
     else:
         return render(request, "f1_StatystykiF1.html", context)
+def f1_Live(request):
+    thread = threading.Thread(target=update)
+    thread.daemon = True
+    thread.start()
+    return render(request, "f1_live.html")
+def update():
+    date_start = datetime.fromisoformat("2024-05-04T16:20:59.569000+00:00").isoformat()
+    while True:
+        date_end = (datetime.fromisoformat(date_start)+timedelta(seconds=5)).isoformat()
+        response = json.loads(urlopen("https://api.openf1.org/v1/intervals?session_key=9506&date>="+str(date_start)+"&date<="+str(date_end)).read().decode('utf-8'))
+        print(response)
+        plik = open("InfoSportsApp/static/zrodloDanych.txt",'w')
+        wyniki=[]
+        for x in response:
+            x= dict(x)
+            dane=[]
+            dane.append(int(x.get("driver_number")))
+            try:
+                dane.append(float(x.get("gap_to_leader")))
+            except:
+                dane.append(None)
+            try:
+                dane.append(float(x.get("interval")))
+            except:
+                dane.append(None)
+            wyniki.append(dane)
+        pierwszy = wyniki[0][0]
+        for i in range(0,len(wyniki)-1):
+            if wyniki[i][0] == pierwszy and i!=0:
+                del wyniki[i:len(wyniki)]
+                break
+            for j in range(i,len(wyniki)-1):
+                try:
+                    if wyniki[i][1] > wyniki[j][1]:
+                        wyniki[i][1], wyniki[j][1] = wyniki[j][1], wyniki[i][1]
+                except(Exception):
+                    print(Exception)
+        for x in wyniki:
+            plik.write("Numer Kierowcyy: "+str(x[0])+" Strata do lidera: "+str(x[1])+" Strata do najblizszego kierowcy: "+str(x[2])+"\n")
+        plik.write(str(datetime.now()))
+        plik.close()
+        time.sleep(5)
+        date_start=date_end
+        print(date_start)
+        print(date_end)

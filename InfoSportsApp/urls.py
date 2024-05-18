@@ -9,6 +9,7 @@ urlpatterns = [
     path("f1/HistoriaF1/", views.f1_HistoriaF1, name="f1_HistoriaF1"),
     path("f1/StatystykiWyscigow/",views.f1_StatystykiF1, name="f1_StatystykiF1"),
     path("f1/MojeWyscigi/", views.f1_MojeWyscigiF1, name="f1_MojeWyscigiF1"),
+    path("f1/Live/", views.f1_Live, name="f1_LiveF1"),
     path("football/", views.football, name="football"),
     path("tenis/", views.tenis, name="tenis"),
 ]
