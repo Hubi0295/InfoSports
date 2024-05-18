@@ -1,13 +1,46 @@
 {% extends "f1.html" %}
 
 {% load static %}
-
+{% block script %}
+<script type="text/javascript" src="{% static 'js/skrypt.js' %}"></script>
+{% endblock %}
 {% block content %}
-<div id="tabelaWyników"/>
 
+<button id="pokazWyniki"></button>
+<div id="tabelaWyników"/>
+</div>
 </div>
 {% endblock %}
 
 {% block style %}
 main{background-color: #3e393d; background-image: none; color:#000000;}
+/* Styl dla całej tabeli */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Styl dla wierszy tabeli */
+tr {
+  background-color: #f8f8f8;
+}
+
+/* Styl dla nieparzystych wierszy tabeli (opcjonalnie) */
+tr:nth-child(odd) {
+  background-color: #e2e2e2;
+}
+
+/* Styl dla komórek tabeli */
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Styl dla nagłówków kolumn (opcjonalnie) */
+th {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+}
+
 {% endblock %}

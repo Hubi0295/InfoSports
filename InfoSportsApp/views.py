@@ -110,11 +110,19 @@ def f1_Live(request):
     return render(request, "f1_live.html")
 def update():
     date_start = datetime.fromisoformat("2024-05-04T16:20:59.569000+00:00").isoformat()
+    context = {}
+    numery = json.loads(urlopen('https://api.openf1.org/v1/drivers?session_key=latest').read().decode('utf-8'))
+    tab_numery = []
+    for x in numery:
+        tab_numery.append(x["driver_number"])
+    for x in tab_numery:
+        context[x]=[0,0]
+
     while True:
         date_end = (datetime.fromisoformat(date_start)+timedelta(seconds=5)).isoformat()
         response = json.loads(urlopen("https://api.openf1.org/v1/intervals?session_key=9506&date>="+str(date_start)+"&date<="+str(date_end)).read().decode('utf-8'))
         print(response)
-        plik = open("InfoSportsApp/static/zrodloDanych.txt",'w')
+        plik = open("InfoSportsApp/static/zrodloDanych.json",'w')
         wyniki=[]
         for x in response:
             x= dict(x)
@@ -134,15 +142,14 @@ def update():
             if wyniki[i][0] == pierwszy and i!=0:
                 del wyniki[i:len(wyniki)]
                 break
-            for j in range(i,len(wyniki)-1):
-                try:
-                    if wyniki[i][1] > wyniki[j][1]:
-                        wyniki[i][1], wyniki[j][1] = wyniki[j][1], wyniki[i][1]
-                except(Exception):
-                    print(Exception)
         for x in wyniki:
-            plik.write("Numer Kierowcyy: "+str(x[0])+" Strata do lidera: "+str(x[1])+" Strata do najblizszego kierowcy: "+str(x[2])+"\n")
-        plik.write(str(datetime.now()))
+            context[x[0]]=[x[1],x[2]]
+        try:
+            sorted_dict = dict(sorted(context.items(), key=lambda item: item[1][0]))
+        except:
+            sorted_dict = context
+        plik.write(str(json.dumps(sorted_dict)))
+
         plik.close()
         time.sleep(5)
         date_start=date_end
