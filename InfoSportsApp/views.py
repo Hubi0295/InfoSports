@@ -109,14 +109,14 @@ def f1_Live(request):
     thread.start()
     return render(request, "f1_live.html")
 def update():
-    date_start = datetime.fromisoformat("2024-05-05T21:32:34.474000+00:00").isoformat()
+    date_start = datetime.fromisoformat("2024-05-05T21:31:00.474000+00:00").isoformat()
     context = {}
     numery = json.loads(urlopen('https://api.openf1.org/v1/drivers?session_key=latest').read().decode('utf-8'))
     tab_numery = []
     for x in numery:
         tab_numery.append(x["driver_number"])
     for x in tab_numery:
-        context[x]=[0,0]
+        context[x]=[0.00001,0.00001]
 
     while True:
         date_end = (datetime.fromisoformat(date_start)+timedelta(seconds=10)).isoformat()
