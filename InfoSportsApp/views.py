@@ -25,7 +25,7 @@ def f1_DaneKierowcy(request):
     parametr = request.GET.get('driverLastName')
 
     if parametr:
-        response = urlopen('https://api.openf1.org/v1/drivers?last_name=' + str(parametr) + '&meeting_key=latest&session_key=latest')
+        response = urlopen('https://api.openf1.org/v1/drivers?last_name=' + str(parametr) + '&meeting_key=latest')
         data = json.loads(response.read().decode('utf-8'))[0]
 
         meeting_info = json.loads(urlopen("https://api.openf1.org/v1/meetings?meeting_key="+str(data["meeting_key"])).read().decode('utf-8'))[0]["meeting_name"]
@@ -109,7 +109,7 @@ def f1_Live(request):
     thread.start()
     return render(request, "f1_live.html")
 def update():
-    date_start = datetime.fromisoformat("2024-05-04T16:20:59.569000+00:00").isoformat()
+    date_start = datetime.fromisoformat("2024-05-05T21:32:34.474000+00:00").isoformat()
     context = {}
     numery = json.loads(urlopen('https://api.openf1.org/v1/drivers?session_key=latest').read().decode('utf-8'))
     tab_numery = []
@@ -119,8 +119,8 @@ def update():
         context[x]=[0,0]
 
     while True:
-        date_end = (datetime.fromisoformat(date_start)+timedelta(seconds=5)).isoformat()
-        response = json.loads(urlopen("https://api.openf1.org/v1/intervals?session_key=9506&date>="+str(date_start)+"&date<="+str(date_end)).read().decode('utf-8'))
+        date_end = (datetime.fromisoformat(date_start)+timedelta(seconds=10)).isoformat()
+        response = json.loads(urlopen("https://api.openf1.org/v1/intervals?session_key=9507&date>="+str(date_start)+"&date<="+str(date_end)).read().decode('utf-8'))
         print(response)
         plik = open("InfoSportsApp/static/zrodloDanych.json",'w')
         wyniki=[]
@@ -137,13 +137,15 @@ def update():
             except:
                 dane.append(None)
             wyniki.append(dane)
+
         pierwszy = wyniki[0][0]
         for i in range(0,len(wyniki)-1):
             if wyniki[i][0] == pierwszy and i!=0:
                 del wyniki[i:len(wyniki)]
                 break
         for x in wyniki:
-            context[x[0]]=[x[1],x[2]]
+            if x[1] and x[2] != "null":
+                context[x[0]]=[x[1],x[2]]
         try:
             sorted_dict = dict(sorted(context.items(), key=lambda item: item[1][0]))
         except:
