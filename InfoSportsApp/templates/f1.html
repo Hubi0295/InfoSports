@@ -15,6 +15,33 @@
         {% block style %}
 
         {% endblock %}
+        .button-link {
+                background-image: linear-gradient(to bottom right, #DC0000, #000000);
+                display: grid;
+                justify-content: center; /* wyśrodkowanie przycisków w poziomie */
+                border-radius: 10px; /* zaokrąglenie krawędzi */
+                width: 85px;
+                height: 70px;
+                margin-right: 2px;
+                margin-left: 5px;
+                    display: block;
+                text-align: center;
+                padding: 10px;
+                background-image: linear-gradient(to bottom right, #DC0000, #000000);
+                color: #FFFFFF; /* kolor tekstu */
+                text-decoration: none;
+                border-radius: 10px; /* zaokrąglenie krawędzi */
+                font-size: 12px;
+                margin-top:3px;
+        }
+        .button-link:hover {
+                    transform: translateY(+4px); /* przesunięcie przycisku w górę */
+        background-image: linear-gradient(to bottom right, #FC0000, #00000F);
+        }
+        a{
+            color:#ffffff;
+        }
+
     </style>
 </head>
 <body>
@@ -24,16 +51,24 @@
     <aside id="pasek">
         <nav id="navigation">
             <ul>
-                <a href="/InfoSportsApp/home"><li id="home">Strona główna</li></a>
-                <a href="/InfoSportsApp/football"><li id="football">Piłka nożna</li></a>
-                <a href="/InfoSportsApp/tenis"><li id="tenis">Tenis</li></a>
+                <li id="home"><a  href="/InfoSportsApp/home">Strona główna</a></li>
+                <li id="football"><a  href="/InfoSportsApp/football">Piłka nożna</a></li>
+                <li id="tenis"><a  href="/InfoSportsApp/tenis">Tenis</a></li>
             </ul>
+
         </nav>
         <div id="control">
             <table>
-            <tr><td><button><a href="/InfoSportsApp/f1/DaneKierowcy">Dane kierowcy</a></button></td><td><button><a href="/InfoSportsApp/f1/StatystykiWyscigow">Statystyki wyścigów</a></button></td><td><button> <a href="/InfoSportsApp/f1/Live">Wyścig Live</a></button></td></tr>
-            <tr><td><button><a href="/InfoSportsApp/f1/">Bolidy</a></button></td><td><button><a href="/InfoSportsApp/f1/HistoriaF1">Historia F1</a></button></td><td><button><a href="/InfoSportsApp/f1/MojeWyscigi">Moje Wyscigi</a></button></td></tr>
-
+                <tr>
+                    <td><a class="button-link" href="/InfoSportsApp/f1/DaneKierowcy">Dane<br>Kierowcy</a></td>
+                    <td><a class="button-link" href="/InfoSportsApp/f1/StatystykiWyscigow">Statystyki wyścigów</a></td>
+                    <td><a class="button-link" href="/InfoSportsApp/f1/Live">Wyścig Live</a></td>
+                </tr>
+                <tr>
+                    <td><a class="button-link" href="/InfoSportsApp/f1/">Bolidy</a></td>
+                    <td><a class="button-link" href="/InfoSportsApp/f1/HistoriaF1">Historia F1</a></td>
+                    <td><a class="button-link" href="/InfoSportsApp/f1/MojeWyscigi">Moje Wyścigi</a></td>
+                </tr>
             </table>
         </div>
     </aside>
@@ -42,7 +77,7 @@
     {% endblock %}
     </main>
     <footer>
-        <div style="color:white" id="autor">Wykonał Hubert Szelepusta</div>
+        <div style="color:white; " id="autor">Wykonał Hubert Szelepusta</div>
     </footer>
 </div>
 </body>

@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+{% if formularz %}
 <div id="info" style="float:left;color:white;">
 <form method="get" action="http://127.0.0.1:8000/InfoSportsApp/f1/StatystykiWyscigow/" >
 <label for="dateStart">Wybierz date startową</label><input type="date" title="Wybierz date początku przeszukiwania" required name="dateStart" id="dateStart" class="dateStart"/><br>
@@ -20,16 +21,17 @@
     <input type="radio" title="Tak padało" required name="rainfall" id="rainfallYes" class="rainfall" value="1"/><br>
 <label for="rainfallNo">Nie: </label>
     <input type="radio" title="Nie padało" required name="rainfall" id="rainfallNo" class="rainfall" value="0"/><br>
-<label for="air_temperature">Podaj temperature powietrza: </label><input type="number" title="Podaj temperature powietrza, będzie szuakne +-2stopnie" required name="air_temperature" id="air_temperature" class="air_temperature"/><br>
-<label for="track_temperature">Podaj temperature toru: </label><input type="number" title="Czy podczas wyścigu padało" required name="track_temperature" id="track_temperature" class="track_temperature"/><br>
-<label for="wind_direction">Podaj kierunek wiania: </label><input type="number" title="Czy podczas wyścigu padało" required name="wind_direction" id="wind_direction" class="wind_direction"/><br>
-<label for="wind_speed">Podaj siłe wiatru: </label><input type="number" title="Czy podczas wyścigu padało" required name="wind_speed" id="wind_speed" class="wind_speed"/><br>
-<label for="pressure">Podaj ciśnienie atmosferyczne: </label><input type="number" title="Czy podczas wyścigu padało" required name="pressure" id="pressure" class="pressure"/><br>
-<label for="humidity">Podaj wilgotność: </label><input type="number"  title="Czy podczas wyścigu padało" required name="humidity" id="humidity" class="humidity"/><br>
-<label for="isAccepted">Czy akcpetujesz regulamin: </label><input type="checkbox" style="width:20px;height:18px;margin-top:10px;" title="Czy podczas wyścigu padało" required name="isAccepted" id="isAccepted" class="isAccepted"/><br>
+<label for="air_temperature">Podaj temperature powietrza: </label><input type="number" min="-30" max="50" title="Podaj temperature powietrza, będzie szuakne +-1stopnie" required name="air_temperature" id="air_temperature" class="air_temperature"/><br>
+<label for="track_temperature">Podaj temperature toru: </label><input type="number" min="-10" max="80" title="Podaj temperature toru, będzie szuakne +-1stopnie" required name="track_temperature" id="track_temperature" class="track_temperature"/><br>
+<label for="wind_direction">Podaj kierunek wiania: </label><input type="number" min="0" max="360" title="Podaj kierunek wiatru, będzie szuakne +-1stopnie" required name="wind_direction" id="wind_direction" class="wind_direction"/><br>
+<label for="wind_speed">Podaj siłe wiatru: </label><input type="number" min="0" max="120" title="Podaj siłe wiatru, będzie szuakne +-1stopnie" required name="wind_speed" id="wind_speed" class="wind_speed"/><br>
+<label for="pressure">Podaj ciśnienie atmosferyczne: </label><input min="900" max="1100" type="number" title="Podaj ciśnienie, będzie szuakne +-1stopnie" required name="pressure" id="pressure" class="pressure"/><br>
+<label for="humidity">Podaj wilgotność: </label><input type="number"  min="0" max="100" title="Podaj % wilgotności, będzie szuakne +-1stopnie" required name="humidity" id="humidity" class="humidity"/><br>
+<label for="isAccepted">Czy akcpetujesz regulamin: </label><input type="checkbox" style="width:20px;height:18px;margin-top:10px;" title="Czy akceptujsz 1024 stron regulaminu?" required name="isAccepted" id="isAccepted" class="isAccepted"/><br>
 <button type="submit">Pokaż jazde</button>
 </form>
 </div>
+{% endif %}
 {% if meeting_name %}
 <div id="meetingInfo">
     <ul>
@@ -61,7 +63,7 @@ main{background-color: #3e393d; background-image: none;}
     background-color: #fff;
     border-radius: 5px;
     float:left;
-    width: 250px;
+    width: 300px;
     height: 120px;
 }
 .driver_data h2{

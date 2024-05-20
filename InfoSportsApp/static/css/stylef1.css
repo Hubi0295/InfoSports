@@ -2,8 +2,6 @@ body{cursor: url('/static/cursor.cur'), auto;}
 aside{background-image: linear-gradient(to bottom right, #DC0000, #000000); font-family:'Formula';}
         footer{background-image: linear-gradient(to top left, #DC0000, #000000);}
         body{background-color: #3e393d;}
-        ul li{background-color: #970000;border: 1px solid #DC0000;}
-        ul li:hover{background-color: #BA0000;}
         main{background-image: url("/static/f1.jpg");}
         button a {font-family:'Formula';font-size:15px;}
         #control{

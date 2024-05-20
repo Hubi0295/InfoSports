@@ -102,6 +102,7 @@ def f1_StatystykiF1(request):
 
         return render(request, "f1_StatystykiF1.html", context)
     else:
+        context["formularz"] = "cokolwiek"
         return render(request, "f1_StatystykiF1.html", context)
 def f1_Live(request):
     thread = threading.Thread(target=update)
@@ -116,7 +117,7 @@ def update():
     for x in numery:
         tab_numery.append(x["driver_number"])
     for x in tab_numery:
-        context[x]=[0.00001,0.00001]
+        context[x]=[0.0,0.0]
 
     while True:
         date_end = (datetime.fromisoformat(date_start)+timedelta(seconds=10)).isoformat()
